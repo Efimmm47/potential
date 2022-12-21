@@ -1,42 +1,38 @@
-﻿// задача 2
-Console.WriteLine("Введите первое число");
-int a = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите второе число");
-int b = Convert.ToInt32(Console.ReadLine());
-int max;
-if (a > b)
-    max = a;
-else
-    max = b;
-Console.WriteLine("Максимальное число равно " + max);
+﻿// Задача 10
+Console.WriteLine("Введите трёхзначное число");
+int number = Convert.ToInt32(Console.ReadLine());
+if (number > 99 || number< -99)
+{
+    while (number > 999 || number < -999)
+{
+        number=number%100;
+}
+    number=number/10;
+    number=number%10;
+    Console.WriteLine(number);
+}
+Console.Write("Вторая цифра: " + number);
 
-// задача 4
-Console.WriteLine("Введите первое число");
-int a = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите второе число");
-int b = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите третье число");
-int c = Convert.ToInt32(Console.ReadLine());
-int max;
-if (a > b)
-    max = a;
-else
-    max = b;
-if (max < c)
-    max = c;
-Console.WriteLine("Максимальное число равно " + max);
+// Задача 13
+Console.WriteLine("Введите трёхзначное число");
+int num = Convert.ToInt32(Console.ReadLine());
+if (num > 99 || num< -99)
+{
+    while (num > 999 || num < -999)
+{
+        num=num/10;
+}
+    num=num% 10;
+    Console.WriteLine(num);
+}
+else Console.WriteLine("Третьего числа нет");
 
-// задача 6
-Console.WriteLine("Введите число");
-int a = Convert.ToInt32(Console.ReadLine());
-if (a % 2 == 0)
-    Console.WriteLine("четное");
-else
-    Console.WriteLine("не четное");
+// Задача 15
+Console.WriteLine ("Введите число");
+int Weekeend = Convert.ToInt32 (Console.ReadLine());
+if ( Weekeend % 7  == 0 || (Weekeend + 1) % 7 == 0)  
 
-// задача 8
-Console.WriteLine("Введите число");
-int a = Convert.ToInt32(Console.ReadLine());
-for (int i = 2; i <= a; i += 2)
-    if (a % 2 == 0)
-        Console.WriteLine(i);
+    Console.WriteLine ("Weekeend!!!");
+
+else 
+Console.WriteLine("don't weekeend:( ");
