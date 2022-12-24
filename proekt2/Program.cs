@@ -1,38 +1,53 @@
-﻿// Задача 10
-Console.WriteLine("Введите трёхзначное число");
-int number = Convert.ToInt32(Console.ReadLine());
-if (number > 99 || number< -99)
-{
-    while (number > 999 || number < -999)
-{
-        number=number%100;
-}
-    number=number/10;
-    number=number%10;
-    Console.WriteLine(number);
-}
-Console.Write("Вторая цифра: " + number);
+﻿// Задача 19
+Console.WriteLine("введите пятизначное число которое вы хотите проверить на палиндром");
+string polin = Console.ReadLine();
+int kolvo = polin.Length;
 
-// Задача 13
-Console.WriteLine("Введите трёхзначное число");
-int num = Convert.ToInt32(Console.ReadLine());
-if (num > 99 || num< -99)
+if (kolvo == 5) 
 {
-    while (num > 999 || num < -999)
+    if (polin[0] == polin[4] && polin[1] == polin[3]) 
+    {
+        Console.WriteLine(polin +"- число является палиндромом");
+    }
+    else
+    {
+        Console.WriteLine(polin +" - число НЕ является палиндромом");
+    }
+}
+else
 {
-        num=num/10;
+    Console.WriteLine("Ошибка!!!");
 }
-    num=num% 10;
-    Console.WriteLine(num);
+
+//Задача 21
+int ReadInt(string message)
+{
+    Console.Write(message);
+    return Convert.ToInt32(Console.ReadLine());
 }
-else Console.WriteLine("Третьего числа нет");
+int x1 = ReadInt("Введите координату X1 первой точки: ");
+int y1 = ReadInt("Введите координату Y1 первой точки: ");
+int z1 = ReadInt("Введите координату Z1 первой точки: ");
+int x2 = ReadInt("Введите координату X2 второй точки: ");
+int y2 = ReadInt("Введите координату Y2 второй точки: ");
+int z2 = ReadInt("Введите координату Z2 второй точки: ");
 
-// Задача 15
-Console.WriteLine ("Введите число");
-int Weekeend = Convert.ToInt32 (Console.ReadLine());
-if ( Weekeend % 7  == 0 || (Weekeend + 1) % 7 == 0)  
+int A = x2 - x1;
+int B = y2 - y1;
+int C = z1 - z2;
 
-    Console.WriteLine ("Weekeend!!!");
+double length = Math.Sqrt(A * A + B * B + C * C);
+Console.WriteLine($"Длинна отрезка {length}");
 
-else 
-Console.WriteLine("don't weekeend:( ");
+//Задача 23
+int ReadInt(string message)
+{
+    Console.Write(message);
+    return Convert.ToInt32(Console.ReadLine());
+}
+int number = ReadInt("Введите число N: ");
+
+for (int i = 1; i <= number; i++)
+{ 
+    Console.Write($"{i*i*i} ");
+}
