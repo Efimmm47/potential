@@ -1,67 +1,97 @@
-﻿//задача 25
-void ToDegree(int a, int b)
+﻿// задача 34
+int[] CreateRandomArray(int N, int start, int end)
 {
-    int result = 1;
-    for (int i = 1; i <= b; i++)
+    int[] RandomArray = new int[N];
+    for (int i = 0; i < N; i++)
     {
-        result = result * a;
+        RandomArray[i] = new Random().Next(start, end + 1);
     }
-    Console.WriteLine(a + " в степени " + b + " = " + result);
+    return RandomArray;
 }
-int ReadInt(string message)
+Console.WriteLine("Введите количество элементов массива: ");
+int N = Convert.ToInt32(Console.ReadLine());
+int start = 100;
+int end = 999;
+int[] bob = (CreateRandomArray(N,start,end));
+int a = 0;
+for (int i = 0; i < N; i++)
 {
-    Console.WriteLine(message);
-    return Convert.ToInt32(Console.ReadLine());
-}
-int numberA = ReadInt("Введите число: ");
-int numberB = ReadInt("Введите степень: ");
-ToDegree(numberA, numberB);
-
-//задача 27
-int number = ReadInt("Введите число: ");
-
-int len = NumberLen(number);
-SumNum(number, len);
-
-int NumberLen(int a)
-{
-    int index = 0;
-    while (a > 0)
+    if (bob[i] % 2 == 0)
     {
-        a /= 10;
-        index++;
+        a = a + 1;
     }
-    return index;
+     else
+     a = a + 0; 
 }
+Console.WriteLine($"[{String.Join(",", bob)}]");
+Console.WriteLine($"[{String.Join(",", a)}]");
 
-void SumNum(int n, int len)
+
+// задача 36
+int[] CreateRandomArray(int N, int start, int end)
 {
-    int sum = 0;
-    for (int i = 1; i <= len; i++)
+    int[] RandomArray = new int[N];
+    for (int i = 0; i < N; i++)
     {
-        sum += n % 10;
-        n /= 10;
+        RandomArray[i] = new Random().Next(start, end + 1);
     }
-    Console.WriteLine($"сумма цифр {sum}");
+    return RandomArray;
 }
-
-int ReadInt(string message)
+Console.WriteLine("Введите количество элементов массива: ");
+int N = Convert.ToInt32(Console.ReadLine());
+int start = -50;
+int end = 50;
+int[] bob = (CreateRandomArray(N,start,end));
+int sumotr = 0;
+for (int i = 0; i < N; i++)
 {
-    Console.Write(message);
-    return Convert.ToInt32(Console.ReadLine());
-
-//здача 29
-int lenArray = ReadInt("Введите длинну массива: ");
-
-int[] randomArray = new int[lenArray];
-for (int i = 0; i < randomArray.Length; i++)
-{
-    randomArray[i] = new Random().Next(1,9);
-    Console.Write(randomArray[i] + " ");
+    if (bob[i] % 2 != 0)
+    {
+        sumotr = sumotr + bob[i];
+    }
+     else
+     sumotr = sumotr + 0; 
 }
+Console.WriteLine($"[{String.Join(",", bob)}]");
+Console.WriteLine($"[{String.Join(",", sumotr)}]");
 
-int ReadInt(string message)
+
+//задача 38
+void FillArrayRandomNumbers(double[] numbers)
 {
-    Console.Write(message);
-    return Convert.ToInt32(Console.ReadLine());
+    for(int i = 0; i < numbers.Length; i++)
+        {
+            numbers[i] = Convert.ToDouble(new Random().Next(1,100)) ;
+        }
 }
+void PrintArray(double[] numbers)
+{
+    Console.Write("[ ");
+    for(int i = 0; i < numbers.Length; i++)
+        {
+            Console.Write(numbers[i] + " ");
+        }
+    Console.Write("]");
+    Console.WriteLine();
+}
+Console.WriteLine("Введите размер массива  ");
+int size = Convert.ToInt32(Console.ReadLine());
+double[] numbers = new double[size];
+FillArrayRandomNumbers(numbers);
+Console.WriteLine("массив: ");
+PrintArray(numbers);
+double min = Int32.MaxValue;
+double max = Int32.MinValue;
+for (int i = 0; i < numbers.Length; i++)
+{
+    if (numbers[i] > max)
+        {
+            max = numbers[i];
+        }
+    if (numbers[i] < min)
+        {
+            min = numbers[i];
+        }
+}
+Console.WriteLine($"Всего {numbers.Length} чисел. Максимальное значение = {max}, минимальное значение = {min}");
+Console.WriteLine($"Разница между максимальным и минимальным значением = {max - min}");
