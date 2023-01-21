@@ -13,7 +13,7 @@ for (int i = 0; i < arr.Length; i++)
  
 Console.WriteLine($"Кол-во элементов > 0: {sumpos}");
 
-//задача 43
+//задание 43
 Console.Write("Введите k1: ");
 double k1 = Convert.ToDouble(Console.ReadLine());
 Console.Write("Введите b1: ");
@@ -26,7 +26,7 @@ double b2 = Convert.ToDouble(Console.ReadLine());
 double x = -(b1 - b2) / (k1 - k2);
 double y = k1 * x + b1;
 
-x = Math.Round(x);
-y = Math.Round(y);
+x = Math.Round(x, 3);
+y = Math.Round(y, 3);
 
 Console.WriteLine($"Пересечение в точке: ({x};{y})");
