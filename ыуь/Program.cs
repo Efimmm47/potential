@@ -1,47 +1,11 @@
-﻿// 47
-double[,] CreateRandomArray(int rows, int columns, int start, int end)
+﻿// 54
+int[,] GetArray(int row, int column, int start, int end)
 {
-    double[,] result = new double[rows, columns];
+    int[,] result = new int[row, column];
 
-    for (int i = 0; i < result.GetLength(0); i++)
+    for (int i = 0; i < row; i++)
     {
-        for (int j = 0; j < result.GetLength(1); j++)
-        {
-            result[i, j] = Math.Round((new Random().NextDouble() * (end - start) + start), 1);
-        }
-    }
-    return result;
-}
-
-void PrintArray(double[,] array)
-{
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            Console.Write($"{array[i, j]}\t");
-        }
-        Console.WriteLine();
-    }
-}
-
-Console.WriteLine("Введите количество строк: ");
-int rows = int.Parse(Console.ReadLine());
-
-Console.WriteLine("Введите количество столбцов: ");
-int columns = int.Parse(Console.ReadLine());
-
-double[,] array = CreateRandomArray(rows, columns, -20, 20);
-PrintArray(array);
-
-// 50
-int[,] GetRandomArray(int rows, int columns, int start, int end)
-{
-    int[,] result = new int[rows, columns];
-
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < columns; j++)
+        for (int j = 0; j < column; j++)
         {
             result[i, j] = new Random().Next(start, end + 1);
         }
@@ -61,32 +25,39 @@ void PrintArray(int[,] array)
     }
 }
 
-int[,] array = GetRandomArray(5, 6, 0, 10);
+int rows = 6;
+int columns = 5;
+int[,] array = GetArray(rows, columns, 0, 9);
+
 PrintArray(array);
 
-Console.WriteLine("Введите позицию элемента: ");
-int number = int.Parse(Console.ReadLine());
-
-int rows = array.GetLength(0);
-int columns = array.GetLength(1);
-
-if (number > rows * columns) Console.WriteLine($"{number} -> такого числа в массиве нет.");
-else
+int temp;
+for (int i = 0; i < rows; i++)
 {
-    int position = number - 1;
-    int i = position / columns;
-    int j = position % columns;
-    Console.WriteLine($"Значение элемента в позиции {number} -> {array[i, j]}");
-}
-
-//52
-int[,] GetRandomArray(int rows, int columns, int start, int end)
-{
-    int[,] result = new int[rows, columns];
-
-    for (int i = 0; i < rows; i++)
+    for (int j = 0; j < columns - 1; j++)
     {
-        for (int j = 0; j < columns; j++)
+        for (int k = j + 1; k < columns; k++)
+        {
+            if (array[i, j] < array[i, k])
+            {
+                temp = array[i, j];
+                array[i, j] = array[i, k];
+                array[i, k] = temp;
+            }
+        }
+    }
+}
+Console.WriteLine();
+PrintArray(array);
+
+//56
+int[,] GetArray(int row, int column, int start, int end)
+{
+    int[,] result = new int[row, column];
+
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < column; j++)
         {
             result[i, j] = new Random().Next(start, end + 1);
         }
@@ -106,20 +77,165 @@ void PrintArray(int[,] array)
     }
 }
 
-int rows = 3;
-int cols = 4;
-int[,] array = GetRandomArray(rows, cols, 0, 9);
+int rows = 6;
+int columns = 5;
+int[,] array = GetArray(rows, columns, 0, 9);
+
 PrintArray(array);
 
-double[] average = new double[cols];
-for (int j =0; j < cols; j++)
+int temp;
+for (int i = 0; i < rows; i++)
 {
-    int sum = 0;
-    for (int i = 0; i < rows; i++)
+    for (int j = 0; j < columns - 1; j++)
     {
-        sum += array[i, j];
+        for (int k = j + 1; k < columns; k++)
+        {
+            if (array[i, j] < array[i, k])
+            {
+                temp = array[i, j];
+                array[i, j] = array[i, k];
+                array[i, k] = temp;
+            }
+        }
     }
-    average[j] = Math.Round(((double)sum/rows), 1);
+}
+Console.WriteLine();
+PrintArray(array);
+
+//58
+int[,] GetArray(int row, int column, int start, int end)
+{
+    int[,] result = new int[row, column];
+
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            result[i, j] = new Random().Next(start, end + 1);
+        }
+    }
+    return result;
 }
 
-Console.WriteLine($"Среднее арифметическое каждого столбца: {String.Join("; ", average)}");
+void PrintArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write($"{array[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+
+int rows = 6;
+int columns = 5;
+int[,] array = GetArray(rows, columns, 0, 9);
+
+PrintArray(array);
+
+int temp;
+for (int i = 0; i < rows; i++)
+{
+    for (int j = 0; j < columns - 1; j++)
+    {
+        for (int k = j + 1; k < columns; k++)
+        {
+            if (array[i, j] < array[i, k])
+            {
+                temp = array[i, j];
+                array[i, j] = array[i, k];
+                array[i, k] = temp;
+            }
+        }
+    }
+}
+Console.WriteLine();
+PrintArray(array);
+
+// 60
+int[,,] GetArray(int row, int col, int tub, int start, int end)
+{
+    int[,,] result = new int[row, col, tub];
+    int[] check = new int[end + 1];
+    
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
+        {
+            for (int k = 0; k < tub; k++)
+            {
+                int number;
+                do
+                {
+                    number = new Random().Next(start, end + 1);
+                }
+                while (check[number] != 0);
+                result[i, j, k] = number;
+                check[number] = 1;
+
+            }
+        }
+    }
+    return result;
+}
+
+void PrintArray(int[,,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            for (int k = 0; k < array.GetLength(2); k++)
+            {
+                Console.Write($"{array[i, j, k]}({i}, {j}, {k}) \t");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+
+int[,,] array = GetArray(2, 2, 2, 10, 99);
+
+PrintArray(array);
+
+//62
+void PrintArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write($"{array[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+int[,] array = new int[4, 4];
+
+int SpiralFillArray(int row, int col, int number, bool direction)
+{
+    if (col < array.GetLength(1) && row < array.GetLength(0) && col >= 0 && row >= 0 && array[row, col] == 0)
+    {
+        array[row, col] = number++;
+        if (direction == false)
+        {
+            number = SpiralFillArray(row, col + 1, number, false);
+            number = SpiralFillArray(row, col - 1, number, false);
+            number = SpiralFillArray(row + 1, col, number, true);
+            number = SpiralFillArray(row - 1, col, number, true);
+        }
+        else
+        {
+            number = SpiralFillArray(row + 1, col, number, true);
+            number = SpiralFillArray(row - 1, col, number, true);
+            number = SpiralFillArray(row, col + 1, number, false);            
+            number = SpiralFillArray(row, col - 1, number, false);            
+        }
+    }
+    return number;
+}
+
+SpiralFillArray(0, 0, 1, false);  
+PrintArray(array);
